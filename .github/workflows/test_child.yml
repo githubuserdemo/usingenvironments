@@ -1,0 +1,38 @@
+name: Test Child
+
+on: 
+  workflow_call:
+    secrets:
+      TEST_SECRET:
+        required: true
+      WRONG_VALUE:
+        required: true
+
+jobs:
+  Job1:
+    runs-on: ubuntu-latest
+    environment: TestEnvironment
+    steps:
+      - name: Step 1
+        run: |
+          if [ "${{ secrets.TEST_SECRET }}" == "123" ]; then
+            echo "Match"
+          else
+            echo "Not matched"
+          fi
+
+      - name: Step 2
+        run: |
+          if [ "${{ secrets.TEST_SECRET }}" == "Wrong" ]; then
+            echo "Set to wrong"
+          else
+            echo "Not set to wrong"
+          fi
+
+      - name: Step 3
+        run: |
+          if [ "${{ secrets.WRONG_VALUE }}" == "Wrong" ]; then
+            echo "Set to wrong"
+          else
+            echo "Not set to wrong"
+          fi
