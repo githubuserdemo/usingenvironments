@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:  
-  Job2:
+  Job:
     uses: ./.github/workflows/test_child.yml
     secrets:
       TEST_SECRET: ${{ secrets.TEST_SECRET }}
