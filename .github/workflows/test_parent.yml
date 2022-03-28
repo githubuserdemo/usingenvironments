@@ -1,0 +1,14 @@
+name: Test Parent
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:  
+  Job2:
+    uses: ./.github/workflows/test_child.yml
+    secrets:
+      TEST_SECRET: ${{ secrets.TEST_SECRET }}
+      WRONG_VALUE: ${{ secrets.WRONG_VALUE }}
